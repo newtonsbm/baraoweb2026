@@ -1,14 +1,5 @@
 {
-  // Allow external/remote access to servers
-  "liveServer.settings.host": "0.0.0.0",
-  "liveServer.settings.port": 5500,
-  
-  // Allow port forwarding from external sources
-  // "[5500, 5501, 5502, 8000, 8080, 3000].forwardedPortsVisibility": "public",
-  
-  // Python development server access
-  "python.linting.enabled": true,
-  
-  // Node development server
-  "npm.autoDetect": "on"
+  // format html as 2 spaces
+  "html.format.indentInnerHtml": true,
+  "html.format.indentSize": 2,
 }
