@@ -44,8 +44,7 @@ p {
 }
 
 /* Listas */
-ul,
-ol {
+ul, ol {
   font-size: 1em;
   line-height: 1.8;
   margin-left: 2em;
@@ -85,7 +84,7 @@ header p {
   font-size: 1em;
   color: #ecf0f1;
   font-style: italic;
-  margin: 0.5em 0 0 0;
+  margin: 10px 0 20px 0;
 }
 
 /* Rodapé */
