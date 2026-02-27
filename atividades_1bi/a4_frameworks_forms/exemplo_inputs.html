@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplos de Inputs HTML com Simple CSS</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: light;
+        --bg: #fff;
+        --accent-bg: #f5f7ff;
+        --text: #212121;
+        --text-light: #585858;
+        --accent: #0d47a1;
+        --accent-hover: #1266e2;
+        --accent-text: var(--bg);
+        --code: #d81b60;
+        --preformatted: #444;
+        --marked: #ffdd33;
+        --disabled: #efefef;
+      }
+    }
+
+    body {
+      max-width: 900px;
+    }
+
+    .input-group {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid #d0cfcf;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+    }
+
+    .input-group h3 {
+      margin-top: 0;
+      color: #0969da;
+      border-bottom: 2px solid #0969da;
+      padding-bottom: 0.5rem;
+    }
+
+    .form-example {
+      margin: 1rem 0;
+      padding: 1rem;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .form-example label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-example input,
+    .form-example textarea,
+    .form-example select {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .form-example small {
+      display: block;
+      color: #666;
+      margin-top: -0.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-block {
+      background-color: #282c34;
+      color: #abb2bf;
+      padding: 1rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+    }
+
+    .button-group button {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .info-box {
+      background-color: #e7f3ff;
+      border-left: 4px solid #0969da;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 3px;
+    }
+
+    .input-checkbox-group,
+    .input-radio-group {
+      margin: 1rem 0;
+    }
+
+    .input-checkbox-group label,
+    .input-radio-group label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+    }
+
+    .input-checkbox-group input[type="checkbox"],
+    .input-radio-group input[type="radio"] {
+      margin-right: 0.5rem;
+      width: auto;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (width < 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>📝 Exemplos de Inputs HTML</h1>
+    <p>Guia completo com todos os tipos de input HTML usando o framework <strong>Simple CSS</strong></p>
+  </header>
+
+  <main>
+
+    <br>
+    <!-- === FORM === -->
+     <section>
+      <h3>A Tag Form</h3>
+      <p>A tag <code>&lt;form&gt;</code> é o elemento HTML utilizado para criar formulários. Ela serve como um contêiner para diversos tipos de elementos de entrada, como campos de texto, botões, checkboxes, etc. O formulário é responsável por coletar os dados inseridos pelo usuário e enviá-los para um servidor ou processá-los de alguma forma.</p>
+      <p>Exemplo básico de um formulário:</p>
+      <div class="code-block">
+        &lt;form action="/submit" method="post"&gt;
+        <br>
+          &lt;label for="name"&gt;Nome:&lt;/label&gt;
+        <br>
+          &lt;input type="text" id="name" name="name"&gt;
+        <br>
+          &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+        <br>
+        &lt;/form&gt;
+      </div>
+      <p>O atributo <code>action</code> define a URL para onde os dados do formulário serão enviados, enquanto o atributo <code>method</code> especifica o método HTTP a ser utilizado (geralmente "get" ou "post").</p>
+      <p>Outros atributos: 
+        <ul>
+          <li><code>enctype</code>: Define o tipo de codificação dos dados (ex: "multipart/form-data" para upload de arquivos)</li>
+          <li><code>target</code>: Especifica onde abrir a resposta do formulário (ex: "_blank" para nova aba)</li>
+          <li><code>novalidate</code>: Desativa a validação automática do formulário</li>
+        </ul>
+      </p>
+      
+
+     </section>
+
+
+    <!-- ==================== INPUTS DE TEXTO ==================== -->
+    <section class="input-group">
+      <h3>🔤 Inputs de Texto</h3>
+
+      <div class="form-example">
+        <label for="text-input">Text Input (padrão)</label>
+        <input type="text" id="text-input" name="nome" placeholder="Digite seu nome aqui...">
+        <small>Para entrada de texto simples</small>
+      </div>
+
+      <div class="form-example">
+        <label for="email-input">Email Input</label>
+        <input type="email" id="email-input" name="email" placeholder="seu@email.com">
+        <small>Valida automaticamente o formato de email</small>
+      </div>
+
+      <div class="form-example">
+        <label for="password-input">Password Input</label>
+        <input type="password" id="password-input" name="senha" placeholder="Digite sua senha">
+        <small>Occulta o texto digitado por razões de segurança</small>
+      </div>
+
+      <div class="form-example">
+        <label for="tel-input">Telephone Input</label>
+        <input type="tel" id="tel-input" name="telefone" placeholder="(11) 98765-4321">
+        <small>Para números de telefone</small>
+      </div>
+
+      <div class="form-example">
+        <label for="url-input">URL Input</label>
+        <input type="url" id="url-input" name="site" placeholder="https://exemplo.com">
+        <small>Valida se é uma URL válida</small>
+      </div>
+
+      <div class="form-example">
+        <label for="search-input">Search Input</label>
+        <input type="search" id="search-input" name="busca" placeholder="Pesquise aqui...">
+        <small>Similar ao text, geralmente com um ícone de lupa</small>
+      </div>
+    </section>
+
+    <!-- ==================== INPUTS NUMÉRICOS ==================== -->
+    <section class="input-group">
+      <h3>🔢 Inputs Numéricos</h3>
+
+      <div class="form-example">
+        <label for="number-input">Number Input</label>
+        <input type="number" id="number-input" name="numero" placeholder="Digite um número" value="0">
+        <small>Aceita apenas números com botões + e -</small>
+      </div>
+
+      <div class="form-example">
+        <label for="range-input">Range Input (Slider)</label>
+        <input type="range" id="range-input" name="intervalo" min="0" max="100" value="50">
+        <small>Slider para selecionar valor em um intervalo</small>
+      </div>
+
+      <div class="two-column">
+        <div class="form-example">
+          <label for="number-min-max">Number com Min/Max</label>
+          <input type="number" id="number-min-max" name="numero-intervalo" min="1" max="10" value="5">
+          <small>Mínimo: 1, Máximo: 10</small>
+        </div>
+
+        <div class="form-example">
+          <label for="number-step">Number com Step</label>
+          <input type="number" id="number-step" name="numero-passo" step="0.5" value="0">
+          <small>Incremento de 0.5 em 0.5</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INPUTS DE DATA E HORA ==================== -->
+    <section class="input-group">
+      <h3>📅 Inputs de Data e Hora</h3>
+
+      <div class="form-example">
+        <label for="date-input">Date Input</label>
+        <input type="date" id="date-input" name="data">
+        <small>Picker de data com calendário</small>
+      </div>
+
+      <div class="form-example">
+        <label for="time-input">Time Input</label>
+        <input type="time" id="time-input" name="hora">
+        <small>Picker de hora</small>
+      </div>
+
+      <div class="form-example">
+        <label for="datetime-input">DateTime-Local Input</label>
+        <input type="datetime-local" id="datetime-input" name="data-hora">
+        <small>Combina data e hora</small>
+      </div>
+
+      <div class="two-column">
+        <div class="form-example">
+          <label for="month-input">Month Input</label>
+          <input type="month" id="month-input" name="mes">
+          <small>Seleciona mês e ano</small>
+        </div>
+
+        <div class="form-example">
+          <label for="week-input">Week Input</label>
+          <input type="week" id="week-input" name="semana">
+          <small>Seleciona semana e ano</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== INPUTS DE COR ==================== -->
+    <section class="input-group">
+      <h3>🎨 Input de Cor</h3>
+
+      <div class="form-example">
+        <label for="color-input">Color Input</label>
+        <input type="color" id="color-input" name="cor" value="#0969da">
+        <small>Picker de cor com paleta</small>
+      </div>
+    </section>
+
+    <!-- ==================== CHECKBOXES ==================== -->
+    <section class="input-group">
+      <h3>☑️ Checkboxes</h3>
+
+      <div class="form-example">
+        <h4>Selecione opções (pode marcar múltiplas):</h4>
+        <div class="input-checkbox-group">
+          <label>
+            <input type="checkbox" name="hobbies" value="leitura">
+            Leitura
+          </label>
+          <label>
+            <input type="checkbox" name="hobbies" value="esportes">
+            Esportes
+          </label>
+          <label>
+            <input type="checkbox" name="hobbies" value="musica">
+            Música
+          </label>
+          <label>
+            <input type="checkbox" name="hobbies" value="programacao">
+            Programação
+          </label>
+        </div>
+        <small>Útil para múltiplas seleções</small>
+      </div>
+
+    </section>
+
+    <!-- ==================== RADIOS ==================== -->
+    <section class="input-group">
+      <h3>⭕ Radio Buttons</h3>
+
+      <div class="form-example">
+        <h4>Selecione uma opção (apenas uma):</h4>
+        <div class="input-radio-group">
+          <label>
+            <input type="radio" name="nivel" value="iniciante">
+            Iniciante
+          </label>
+          <label>
+            <input type="radio" name="nivel" value="intermediario">
+            Intermediário
+          </label>
+          <label>
+            <input type="radio" name="nivel" value="avancado">
+            Avançado
+          </label>
+        </div>
+        <small>Apenas uma opção pode ser selecionada</small>
+      </div>
+
+      <div class="form-example">
+        <h4>Escolha seu navegador favorito:</h4>
+        <div class="input-radio-group">
+          <label>
+            <input type="radio" name="browser" value="chrome">
+            Chrome
+          </label>
+          <label>
+            <input type="radio" name="browser" value="firefox">
+            Firefox
+          </label>
+          <label>
+            <input type="radio" name="browser" value="safari">
+            Safari
+          </label>
+          <label>
+            <input type="radio" name="browser" value="edge">
+            Edge
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SELECT ==================== -->
+    <section class="input-group">
+      <h3>📋 Select (Dropdown)</h3>
+
+      <div class="form-example">
+        <label for="country-select">Selecione um país:</label>
+        <select id="country-select" name="pais">
+          <option>-- Escolha uma opção --</option>
+          <option>Brasil</option>
+          <option>Portugal</option>
+          <option>Angola</option>
+          <option>Moçambique</option>
+        </select>
+      </div>
+
+      <div class="form-example">
+        <label for="multiple-select">Selecione múltiplos (com Ctrl/Cmd):</label>
+        <select id="multiple-select" name="linguagens" multiple>
+          <option>JavaScript</option>
+          <option>Python</option>
+          <option>Java</option>
+          <option>C++</option>
+          <option>PHP</option>
+          <option>Ruby</option>
+        </select>
+        <small>Use Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplas opções</small>
+      </div>
+
+      <div class="form-example">
+        <label for="grouped-select">Select com Grupos:</label>
+        <select id="grouped-select" name="tecnologia">
+          <optgroup label="Frontend">
+            <option>HTML</option>
+            <option>CSS</option>
+            <option>JavaScript</option>
+          </optgroup>
+          <optgroup label="Backend">
+            <option>Python</option>
+            <option>Java</option>
+            <option>PHP</option>
+          </optgroup>
+          <optgroup label="Databases">
+            <option>MySQL</option>
+            <option>PostgreSQL</option>
+            <option>MongoDB</option>
+          </optgroup>
+        </select>
+      </div>
+    </section>
+
+    <!-- ==================== TEXTAREA ==================== -->
+    <section class="input-group">
+      <h3>📄 Textarea (Texto Multilinha)</h3>
+
+      <div class="form-example">
+        <label for="textarea-basic">Textarea Básico:</label>
+        <textarea id="textarea-basic" name="texto" placeholder="Digite seu texto aqui..."></textarea>
+      </div>
+
+      <div class="form-example">
+        <label for="textarea-placeholder">Textarea com Placeholder:</label>
+        <textarea id="textarea-placeholder" name="descricao" rows="5" placeholder="Escreva uma descrição detalhada..."></textarea>
+        <small>Use o atributo rows para definir altura</small>
+      </div>
+
+      <div class="form-example">
+        <label for="textarea-readonly">Textarea Read-Only:</label>
+        <textarea id="textarea-readonly" name="texto-leitura" readonly>Este texto não pode ser editado</textarea>
+        <small>Atributo readonly impede edição</small>
+      </div>
+
+      <div class="form-example">
+        <label for="textarea-disabled">Textarea Disabled:</label>
+        <textarea id="textarea-disabled" name="texto-desabilitado" disabled>Este campo está desabilitado</textarea>
+        <small>Atributo disabled desabilita o campo</small>
+      </div>
+    </section>
+
+    <!-- ==================== INPUTS ESPECIAIS ==================== -->
+    <section class="input-group">
+      <h3>⚙️ Inputs Especiais</h3>
+
+      <div class="form-example">
+        <label for="file-input">File Input (Upload):</label>
+        <input type="file" id="file-input" name="arquivo">
+        <small>Para upload de arquivos</small>
+      </div>
+
+      <div class="form-example">
+        <label for="file-multiple">File Input (Múltiplos):</label>
+        <input type="file" id="file-multiple" name="arquivos" multiple>
+        <small>Permite selecionar múltiplos arquivos</small>
+      </div>
+
+      <div class="form-example">
+        <label for="file-image">File Input (Apenas imagens):</label>
+        <input type="file" id="file-image" name="imagem" accept="image/*">
+        <small>accept="image/*" restringe a tipos de arquivo</small>
+      </div>
+
+      <div class="form-example">
+        <label for="hidden-input">Hidden Input:</label>
+        <input type="hidden" id="hidden-input" name="id-oculto" value="valor-invisivel">
+        <small>Campo invisível para dados que devem ser enviados</small>
+      </div>
+    </section>
+
+    <!-- ==================== BUTTONS ==================== -->
+    <section class="input-group">
+      <h3>🔘 Buttons</h3>
+
+      <div class="form-example">
+        <h4>Tipos de Button:</h4>
+        <div class="button-group">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+          <button type="button">Button</button>
+        </div>
+      </div>
+
+      <div class="form-example">
+        <h4>Button Básico com Estilos:</h4>
+        <div class="button-group">
+          <button>Padrão</button>
+          <button disabled>Desabilitado</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FIELDSET ==================== -->
+    <section class="input-group">
+      <h3>📦 Fieldset (Agrupamento)</h3>
+
+      <fieldset>
+        <legend>Dados Pessoais</legend>
+
+        <div class="form-example">
+          <label for="fullname">Nome Completo:</label>
+          <input type="text" id="fullname" name="nome-completo" placeholder="João Silva">
+        </div>
+
+        <div class="form-example">
+          <label for="birthdate">Data de Nascimento:</label>
+          <input type="date" id="birthdate" name="data-nascimento">
+        </div>
+
+        <div class="form-example">
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00">
+        </div>
+      </fieldset>
+    </section>
+
+    <!-- ==================== RESUMO ==================== -->
+    <section class="info-box">
+      <h2>📚 Resumo dos Inputs HTML</h2>
+
+      <h3>Inputs de Texto:</h3>
+      <ul>
+        <li><code>type="text"</code> - Texto simples</li>
+        <li><code>type="email"</code> - Email com validação</li>
+        <li><code>type="password"</code> - Senha occulta</li>
+        <li><code>type="tel"</code> - Telefone</li>
+        <li><code>type="url"</code> - URL com validação</li>
+        <li><code>type="search"</code> - Busca</li>
+      </ul>
+
+      <h3>Inputs Numéricos:</h3>
+      <ul>
+        <li><code>type="number"</code> - Número incrementável</li>
+        <li><code>type="range"</code> - Slider</li>
+      </ul>
+
+      <h3>Inputs de Data/Hora:</h3>
+      <ul>
+        <li><code>type="date"</code> - Data</li>
+        <li><code>type="time"</code> - Hora</li>
+        <li><code>type="datetime-local"</code> - Data e hora</li>
+        <li><code>type="month"</code> - Mês</li>
+        <li><code>type="week"</code> - Semana</li>
+      </ul>
+
+      <h3>Inputs de Seleção:</h3>
+      <ul>
+        <li><code>type="checkbox"</code> - Múltiplas seleções</li>
+        <li><code>type="radio"</code> - Uma seleção</li>
+        <li><code>&lt;select&gt;</code> - Dropdown</li>
+      </ul>
+
+      <h3>Outros:</h3>
+      <ul>
+        <li><code>type="color"</code> - Picker de cor</li>
+        <li><code>type="file"</code> - Upload de arquivo</li>
+        <li><code>type="hidden"</code> - Campo invisível</li>
+        <li><code>&lt;textarea&gt;</code> - Texto multilinha</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>✅ Material educativo - Exemplos de Inputs HTML com Simple CSS Framework</p>
+    <p>Todos os exemplos são funcionais e prontos para uso em seus projetos!</p>
+  </footer>
+
+</body>
+
+</html>
