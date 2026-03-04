@@ -14,12 +14,17 @@
 <body>
   <main>
     <h1>TODO Exemplo</h1>
+
     <label>Tarefa:
-      <input type="text">
+      <input type="text" placeholder="Digite a tarefa aqui...">
     </label>
     <button onclick="addTarefa()">Add</button>
+
+    <!-- Lista de tarefas -->
     <ul id="tarefas">
     </ul>
+
+    <!-- Template para item de tarefa -->
     <template id="itemTarefa">
       <li>
         <input type="checkbox">
@@ -29,6 +34,7 @@
     </template>
   </main>
   <script>
+
     const inputTarefa = document.querySelector('input');
     const listTarefas = document.getElementById('tarefas');
     const templateItemTarefa = document.getElementById('itemTarefa');
