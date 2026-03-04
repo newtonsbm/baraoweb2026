@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Duelo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .pokemon {
+      display: inline-block;
+      margin: 20px;
+    }
+    .vida {
+      font-weight: bold;
+    }
+    #console {
+      border: 1px solid #000;
+      padding: 10px;
+      margin-top: 20px;
+      height: 200px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="pokemon">
+    <h3>Bulbassauro</h3>
+    <p>Vida: <span id="vidaPoke1" class="vida">100</span></p>
+    <button id="ataquePlayer1" onclick="ataque(poke1, poke2)">Ataque P1</button>
+  </div>
+  <div class="pokemon">
+    <h3>Charmander</h3>
+    <p>Vida: <span id="vidaPoke2" class="vida">100</span></p>
+    <button id="ataquePlayer2" onclick="ataque(poke2, poke1)">Ataque P2</button>
+  </div>
+  <button onclick="reiniciar()">Reiniciar Batalha</button>
+  <h2>Log da Batalha</h2>
+  <div id="console"></div>
+  <script>
+    const consoleBatalha = document.getElementById('console');
+    const vidaPoke1 = document.getElementById('vidaPoke1');
+    const vidaPoke2 = document.getElementById('vidaPoke2');
+
+    let poke1 = {
+      nome: 'Bulbassauro',
+      vida: 100,
+      ataque: 10,
+      defesa: 5,
+    };
+    let poke2 = {
+      nome: 'Charmander',
+      vida: 100,
+      ataque: 10,
+      defesa: 5,
+    };
+
+    function ataque(pokeAtacante, pokeDefensor) {
+      const miss = Math.random() > 0.5;
+      if (miss) {
+        consoleBatalha.innerHTML += `<p>${pokeAtacante.nome} errou o ataque!</p>`;
+        return;
+      }
+      const dano = pokeAtacante.ataque - pokeDefensor.defesa;
+      pokeDefensor.vida -= dano;
+      consoleBatalha.innerHTML += `<p>${pokeAtacante.nome} atacou ${pokeDefensor.nome} e causou ${dano} de dano!</p>`;
+      consoleBatalha.innerHTML += `<p>${pokeDefensor.nome} agora tem ${pokeDefensor.vida} de vida!</p>`;
+      atualizarVida();
+    }
+
+    function atualizarVida() {
+      vidaPoke1.textContent = poke1.vida;
+      vidaPoke2.textContent = poke2.vida;
+    }
+
+    function reiniciar() {
+      poke1.vida = 100;
+      poke2.vida = 100;
+      atualizarVida();
+      consoleBatalha.innerHTML = '';
+      iniciarBatalha();
+    }
+
+    function iniciarBatalha() {
+      const intervalo = setInterval(() => {
+        if (poke1.vida <= 0 || poke2.vida <= 0) {
+          clearInterval(intervalo);
+          consoleBatalha.innerHTML += `<p>${poke1.vida <= 0 ? poke1.nome : poke2.nome} foi derrotado!</p>`;
+          return;
+        }
+        ataque(poke1, poke2);
+        if (poke2.vida > 0) {
+          ataque(poke2, poke1);
+        }
+      }, 1000);
+    }
+
+    iniciarBatalha();
+  </script>
+</body>
+</html>
