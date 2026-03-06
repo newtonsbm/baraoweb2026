@@ -1,4 +1,4 @@
-# Programação Web — Centro Universitário Barão de Mauá (baraoweb2026)
+# Programação Web — Centro Universitário Barão de Mauá
 
 Este repositório reúne materiais, atividades e exemplos da disciplina de Programação Web do Centro Universitário Barão de Mauá (turma 2026). O objetivo é centralizar conteúdos de apoio, exercícios práticos e entregas para que os alunos possam estudar, praticar e submeter as tarefas da disciplina.
 
@@ -27,7 +27,6 @@ Observação: muitas atividades podem ser executadas diretamente no navegador (a
 
 - Leia cuidadosamente o enunciado antes de começar.
 - Faça commits frequentes com mensagens claras.
-- Separe código de produção e exemplos didáticos em pastas distintas quando necessário.
 - Documente decisões importantes no `README.md` da atividade ou em comentários.
 
 ## Dúvidas
@@ -35,6 +34,3 @@ Observação: muitas atividades podem ser executadas diretamente no navegador (a
 - Acesse o material disponível no Portal
 - Entre em contato via Portal ou também por email <newton.miyoshi at baraodemaua.br>
 
----
-
-Arquivo mantido como material oficial da disciplina — verifique sempre as versões e comunicações da equipe docente para informações sobre prazos e critérios de avaliação.
