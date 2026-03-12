@@ -17,6 +17,11 @@ Cada pasta de atividade normalmente contém um arquivo `*_tarefa.md` com conteú
 
 Observação: muitas atividades podem ser executadas diretamente no navegador (abra o arquivo HTML) ou utilizando extensões/servidores locais simples no editor (ex.: Live Server no VS Code).
 
+## Django-Starter
+- Esse é o projeto "base" utilizado durante as aulas
+- No README esta o passo a passo realizado para criar o projeto
+- Nessa versão nao está configurado ainda a autenticacao
+
 ## Ferramentas recomendadas
 
 - Editor: Visual Studio Code (ou outro de preferência)
