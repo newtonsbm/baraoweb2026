@@ -1,20 +1,52 @@
 {% load static %}
-
-<c-layouts.base>
-<div class="hero bg-base-200 py-32">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <img
-      src="{% static 'images/django-starter-fig.png' %}"
-      class="max-w-sm rounded-lg shadow-2xl"
-    />
-    <div>
-      <h1 class="text-5xl font-bold">Django Starter</h1>
-      <p class="py-6">
-        Template moderno para projetos Django com Tailwind CSS, DaisyUI e Django Cotton. 
-        Desenvolvimento rápido com componentes reutilizáveis, auto-reload e configurações otimizadas para aprendizado.
-      </p>
-      <a href="https://docs.djangoproject.com/en/dev/" class="btn btn-primary">Começar Agora</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Django Starter</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar bg-base-100 shadow-sm">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl">
+      <i class="bi bi-cup-straw"></i>
+      Django Starter
+      </a>
     </div>
-  </div>
-</div>
-</c-layouts.base>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1">
+        <li><a href="{% url 'index' %}">Principal</a></li>
+        <li><a href="{% url 'exemplo' %}">Exemplo</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN - HERO -->
+  <main>
+    <div class="hero bg-base-200 py-30">
+      <div class="hero-content flex-col lg:flex-row-reverse">
+        <img
+          src="{% static 'images/django-starter-fig.png' %}"
+          class="max-w-sm rounded-lg shadow-2xl"
+        />
+        <div>
+          <h1 class="text-5xl font-bold">Django Starter</h1>
+          <p class="py-6">
+            Template moderno para projetos Django com Tailwind CSS, DaisyUI e Django Cotton. 
+            Desenvolvimento rápido com componentes reutilizáveis, auto-reload e configurações otimizadas para aprendizado.
+          </p>
+          <a href="https://docs.djangoproject.com/en/dev/" class="btn btn-primary">Começar Agora</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
