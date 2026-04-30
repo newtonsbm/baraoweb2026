@@ -1,0 +1,56 @@
+{% load static %}
+
+<c-layouts.base title="Dashboard">
+  <main class="max-w-5xl mx-auto my-12 px-4">
+    <div class="flex flex-col gap-2 mb-8">
+      <h1 class="text-4xl font-bold">Bem-vindo a sua conta</h1>
+      <p class="text-lg">Gerencie suas informacoes pessoais e seu acesso.</p>
+    </div>
+
+    <section class="card bg-base-100 shadow-sm">
+      <div class="card-body">
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-2xl font-semibold">Informacoes do usuario</h2>
+            <p class="mt-2"><strong>Nome:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+          </div>
+          <div class="flex gap-2">
+            <a href="{% url 'perfil_update' %}" class="btn btn-primary">
+              <i class="bi bi-person-gear"></i>
+              Editar perfil
+            </a>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline">Sair</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        {% if user.perfil %}
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <p class="text-sm text-gray-500">Telefone</p>
+              <p>{{ user.perfil.telefone|default:"Nao informado" }}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">CPF</p>
+              <p>{{ user.perfil.cpf|default:"Nao informado" }}</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">Data de nascimento</p>
+              <p>{{ user.perfil.data_nascimento|date:"d/m/Y"|default:"Nao informada" }}</p>
+            </div>
+          </div>
+        {% else %}
+          <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i>
+            <span>Perfil ainda nao preenchido.</span>
+          </div>
+        {% endif %}
+      </div>
+    </section>
+  </main>
+</c-layouts.base>

@@ -1,0 +1,32 @@
+{% load static %}
+
+<c-layouts.base title="Padarias">
+  <c-hero 
+    bg_image="{% static 'images/padaria2.png' %}"
+    title="Conheça nossa rede de Padarias!"
+  ></c-hero>
+  
+  <!-- INICIO DO MAIN HOME -->
+  <main class="max-w-4xl mx-auto my-20 p-2">
+    <h1 class="text-4xl">Padarias Conveniadas</h1>
+    <section class="my-10 flex flex-col gap-10 ">
+      {% for padaria in padarias %}
+        <div class="card lg:card-side bg-base-100 shadow-sm">
+          <figure class="lg:w-1/2">
+            <img class="aspect-video" src="{{ padaria.imagem.url }}" alt="{{ padaria.nome }}" />
+          </figure>
+          <div class="card-body lg:w-1/2">
+            <h2 class="card-title">{{ padaria.nome }}</h2>
+            <p>{{ padaria.descricao }}</p>
+            <ul>
+              <li><i class="bi bi-map"></i> {{ padaria.endereco.cidade }} / {{ padaria.endereco.estado }}</li>
+              <li><i class="bi bi-envelope"></i> {{ padaria.email }} </li>
+              <li><i class="bi bi-phone"></i> {{ padaria.telefone }}</li>
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+  </main>
+  <!-- FIM DO MAIN HOME -->
+</c-layouts.base>
