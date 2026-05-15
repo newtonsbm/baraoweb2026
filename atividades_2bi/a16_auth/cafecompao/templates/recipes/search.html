@@ -1,0 +1,83 @@
+{% load static %}
+
+<c-layouts.base title="Busca de Receitas">
+  <!-- INICIO DO HERO -->
+  <div class="hero min-h-[40vh]" style="background-image: url({% static 'images/recipe-bg.jpg' %});">
+    <div class="hero-overlay"></div>
+    <div class="hero-content text-neutral-content text-center">
+      <div class="max-w-2xl">
+        <h1 class="mb-5 text-5xl font-bold">Receitas Deliciosas</h1>
+        <p class="mb-5 text-xl">
+          Encontre inspirações para suas refeições favoritas.
+        </p>
+        
+        <form method="get" class="flex w-full max-w-lg mx-auto">
+          <input 
+            type="text" 
+            name="query" 
+            value="{{ query }}" 
+            placeholder="Digite o que deseja buscar..." 
+            class="input input-bordered flex-grow text-black"
+          >
+          <button type="submit" class="btn btn-primary ml-2">
+            <i class="bi bi-search"></i> Buscar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- FIM DO HERO -->
+  
+  <!-- INICIO DO CONTEÚDO -->
+  <div class="max-w-6xl mx-auto my-10 p-4">
+    {% if error_message %}
+      <div class="alert alert-error mb-6">
+        <i class="bi bi-exclamation-triangle"></i>
+        <span>{{ error_message }}</span>
+      </div>
+    {% endif %}
+    
+    {% if query %}
+      <h2 class="text-2xl font-bold mb-6">Resultados para "{{ query }}"</h2>
+      
+      {% if recipes %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {% for recipe in recipes %}
+            <div class="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow">
+              <figure class="px-4 pt-4">
+                <img 
+                  src="{{ recipe.image }}" 
+                  alt="{{ recipe.title }}" 
+                  class="rounded-xl w-full h-48 object-cover"
+                >
+              </figure>
+              <div class="card-body">
+                <h3 class="card-title text-lg">{{ recipe.title }}</h3>
+                <div class="card-actions justify-end mt-4">
+                  <a 
+                    href="https://spoonacular.com/recipes/{{ recipe.title|slugify }}-{{ recipe.id }}" 
+                    target="_blank" 
+                    class="btn btn-primary btn-sm"
+                  >
+                    <i class="bi bi-eye"></i> Ver Receita
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="alert alert-info">
+          <i class="bi bi-info-circle"></i>
+          <span>Nenhuma receita encontrada para "{{ query }}".</span>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="text-center py-10">
+        <i class="bi bi-search text-6xl text-gray-300 mb-4"></i>
+        <p class="text-xl text-gray-500">Digite acima o que você gostaria de cozinhar</p>
+      </div>
+    {% endif %}
+  </div>
+  <!-- FIM DO CONTEÚDO -->
+</c-layouts.base>
